@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Eventos, PHP e Microsserviços</title>
 
 		<link rel="stylesheet" href="../base_revealjs/css/reset.css">
 		<link rel="stylesheet" href="../base_revealjs/css/reveal.css">
@@ -54,7 +54,8 @@
 							</p>
 							<p>
 								<small>
-									<b>@chicaothiago</b>
+									<b>@chicaothiago</b> <br>
+									<b>fthiagogv@gmail.com</b>
 								</small>
 							</p>
 						</div>
@@ -65,11 +66,27 @@
 				</section>
 
 				<section>
+					<h5>O que você vai ver?</h5>
+					<p>
+						<small>
+							Sobre Php, Eventos, Queue, Microsserviços, comunicação via streaming, Kafka, e um pouco mais.
+						</small>
+					</p>
+					<h5>O que você não vai ver.</h5>
+					<p>
+						<small>
+							Como é uma implementação nos seus detalhes
+							<br>
+							Eu implementar alguma coisa, ou coisa alguma.
+						</small>
+					</p>
+				</section>
+
+				<section>
 					<h5>Agenda:</h5>
 					<ul>
 						<li>Microsserviços</li>
 						<li>Eventos e Php</li>
-						<li>Php Reativo? What?!?</li>
 						<li>Comunicação, Streaming</li>
 						<li>Php e streaming... party hard?</li>
 					</ul>
@@ -115,18 +132,25 @@
 						<h3>Eventos e PHP</h3>
 					</section>
 					<section>
-						<h5>Mas porque falar de eventos?</h5>
-						<img src="ms-rest-simple.jpg" alt="ms-rest-simple"  style="width: 100%;">
-					</section>
-					<section>
-							<h5>Mas porque falar de eventos?</h5>
-							<img src="ms-event-streaming-simple.jpg" alt="ms-event-streaming-simple" style="100%">
-					</section>
-					<section>
-							<img src="event-communication.png" alt="bla">
+						<h5>Mas, por que falar de eventos?</h5>
+						<p class="fragment">Otimizam o processo da request no sistema.</p>
+						<p class="fragment">São imutáveis, sendo menos permissivos que o REST</p>
+						<p class="fragment">Mais facilmente escaláveis</p>
+						<p class="fragment">Multiplas ações podem ocorrer simultaneamente</p>
 					</section>
 					<section>
 						<h5>Tá, e onde estão os eventos no PHP?</h5>
+						<p>Levando ao pé da letra:</p>
+						<p>Utilizando Events e Events Listeners, tanto no Laravel como no Symfony</p>
+						<div class="flow-row-around">
+							<a href="https://laravel.com/docs/6.x/events">Laravel</a>
+							<a href="https://symfony.com/doc/current/event_dispatcher.html">Symfony</a>
+						</div>
+						<p>Como utilizando EventManager no Zend</p>
+						<a href="https://framework.zend.com/manual/2.4/en/modules/zend.event-manager.event-manager.html">Zend Framework</a>
+					</section>
+					<section>
+						<h5>E se quiser ser mais assíncrono...</h5>
 						<small>Exemplos do que podemos usar para executar eventos assíncronos (similar JS)</small>
 						<div class="flow-row-around">
 							<div>
@@ -158,9 +182,153 @@
 							</div>
 						</div>
 					</section>
+				</section>
+
+				<section>
 					<section>
-						<h5>Mas, quero rodar eventos no meu Laravel/Symfony. Pode não?</h5>
-						<p class="fragment">Marré-claro</p>						
+						Comunicação, Streaming / Queue
+					</section>
+					<section>
+						<h5>REST</h5>
+						<img src="ms-rest-simple.jpg" alt="ms-rest-simple"  style="width: 100%;">
+					</section>
+					<section>
+						<h5>Filas, todo brasileiro gosta de filas... ou não.</h5>
+						<img src="event-sourcing-karka.jpeg" alt="event-sourcing-karka" style="width: 80%;">
+					</section>
+					<section>
+						<img src="exemplo.jpg" alt="exemplo" style="width: 100%;" class="no-effect">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Php e streaming, party hard?</h5>
+					</section>
+					<section>
+						<h5>Ferramentas para trabalhar com streaming/filas</h5>
+						<div class="flow-row-around">
+							<a href="http://www.rabbitmq.com/"> <img class="no-effect" style="width: 200px;" src="https://www.rabbitmq.com/img/RabbitMQ-logo.svg" alt=""> </a>
+							<a href="http://redis.io/topics/pubsub" style="background-color: black;"> <img class="no-effect" style="width: 200px;" src="https://redis.io/images/redis-white.png" alt=""> </a>
+							<a href="https://kafka.apache.org/"> <img class="no-effect" style="width: 200px;" src="https://kafka.apache.org/images/logo.png" alt="kafka"> </a>
+							<a href="https://aws.amazon.com/sns/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc"> <img src="https://www.multichannel.com/.image/t_share/MTU0MDYzODE5MTk5MDMwMzU0/aws-logojpg.jpg" alt="" class="no-effect" style="width: 100px;" ></a>
+						</div>
+					</section>
+					<section>
+						<h5>Eu quero saber é no php!</h5>
+						<a href="https://laravel.com/docs/6.x/queues">Laravel</a> <br>
+						<a href="https://symfony.com/doc/current/messenger.html#transports-async-queued-messages">Synfony</a> <br>
+						<a href="https://github.com/php-enqueue/enqueue-dev">Enqueue-dev</a>
+					</section>
+					<section>
+						<h5>Por onde começar?</h5>
+						<p>Um simples exemplo utilizando Laravel e Kafka</p>
+					</section>
+					<section>
+						<h5>Instalando Enqueue</h5>
+						<pre>
+						<code>composer require enqueue/laravel-queue enqueue/fs</code>
+						</pre>
+					</section>
+					<section>
+						<h5>Configurando</h5>
+						<pre>
+							<code class="php">
+// config/app.php
+return [
+  'providers' => [
+    Enqueue\LaravelQueue\EnqueueServiceProvider::class,
+  ],
+];
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h5>Exemplo</h5>
+						<pre>
+							<code class="php">
+// config/queue.php
+
+return [
+	'default' => 'interop',
+	'connections' => [
+		'interop' => [
+			'driver' => 'interop',
+			'dsn' => 'amqp+rabbitmq://guest:guest@localhost:5672/%2f',
+		],
+	],
+];
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h5>Exemplo</h5>
+						<small>É possível trabalhar utilizando os mesmos conteitos de Queue do Laravel</small>
+						<pre>
+							<code class="php">
+$job = (new \App\Jobs\EnqueueTest())->onConnection('interop');
+dispatch($job);
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h5>Trabalhando com Kafka</h5>
+						<img src="http://cloudurable.com/images/kafka-architecture-topics-producers-consumers.png" alt="">
+					</section>
+					<section>
+						<small>Instalando Transporter</small>
+						<pre>
+							<code>composer require enqueue/rdkafka</code>
+						</pre>
+					</section>
+					<section>
+						<h5>Exemplo</h5>
+						<small>Criando o contexto</small>
+						<pre>
+							<code class="php">
+use Enqueue\RdKafka\RdKafkaConnectionFactory;
+
+// connects to localhost:9092
+$connectionFactory = new RdKafkaConnectionFactory();
+$context = $connectionFactory->createContext();
+							</code>
+						</pre>
+					</section>
+					<section>
+						<pre>
+							<code class="php">
+/** @var \Enqueue\RdKafka\RdKafkaContext $context */
+
+$message = $context->createMessage('Hello world!');
+$fooTopic = $context->createTopic('foo');
+$context->createProducer()->send($fooTopic, $message);
+							</code>
+						</pre>
+					</section>
+					<section>
+						<pre>
+							<code class="php">
+/** @var \Enqueue\RdKafka\RdKafkaContext $context */
+
+$message = $context->createMessage('Hello world!');
+$fooQueue = $context->createQueue('foo');
+$context->createProducer()->send($fooQueue, $message);
+							</code>
+						</pre>
+					</section>
+					<section>
+						<pre>
+							<code class="php">
+/** @var \Enqueue\RdKafka\RdKafkaContext $context */
+
+$fooQueue = $context->createQueue('foo');
+$consumer = $context->createConsumer($fooQueue);
+
+$message = $consumer->receive();
+// process a message
+$consumer->acknowledge($message);
+							</code>
+						</pre>
 					</section>
 				</section>
 
