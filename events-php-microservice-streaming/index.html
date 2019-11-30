@@ -8,7 +8,7 @@
 
 		<link rel="stylesheet" href="../base_revealjs/css/reset.css">
 		<link rel="stylesheet" href="../base_revealjs/css/reveal.css">
-		<link rel="stylesheet" href="../base_revealjs/css/theme/black.css">
+		<link rel="stylesheet" href="../base_revealjs/css/theme/white.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="../base_revealjs/lib/css/monokai.css">
@@ -21,12 +21,149 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+		<style>
+			.no-effect {
+				 margin: 0px !important; margin-top: 5px !important; background: none !important; border: none !important; box-shadow: none !important;
+			}
+			.flow-row-around {
+				display: flex; flex-direction: row; justify-content: space-around;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<p>Eventos, PHP e Microsserviços, pode dar em festa, até via streaming</p>
+				</section>
+
+				<section>
+					<h5>Quem sou eu?</h5>
+					<div style="display: flex; flex-direction: row;">
+						<div style="margin-right: 30px">
+							<p>
+								<small>
+									Francisco (aka. Chicão) Thiago
+									<br>
+									Mestrando em Ciência da Computação (UECE)
+									<br>	
+									Desenvolvedor Web (3E Engenharia)
+									<br>
+									Laravel, Codeigniter, <br> Mysql, Mongodb, Couchdb, <br> Ionic, Vuejs, Quasar, Jquery <img src="https://imagensemoldes.com.br/wp-content/uploads/2018/06/Emoji-Triste-PNG.png" alt="" style="height: 20px; margin: 0px !important; margin-top: 5px !important; background: none !important; border: none !important; box-shadow: none !important; height: 20px;"> <br> AWS <br> impressora, formatar windows, evangelizar o linux, <br> etc, etc, etc ...
+								</small>
+							</p>
+							<p>
+								<small>
+									<b>@chicaothiago</b>
+								</small>
+							</p>
+						</div>
+						<div style="margin-left: 30px;">
+							<img src="photo.jpg" alt="Profile" style="max-height: 200px;">
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h5>Agenda:</h5>
+					<ul>
+						<li>Microsserviços</li>
+						<li>Eventos e Php</li>
+						<li>Php Reativo? What?!?</li>
+						<li>Comunicação, Streaming</li>
+						<li>Php e streaming... party hard?</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h3>Microsserviços e os eventos</h3>
+					</section>
+					<section>
+						<h5>O que seria microsserviços?</h5>
+						<div style="display: flex; flex-direction: row; justify-content: space-around;">
+							<div class="fragment">
+								<img src="bus-lotado.jpg" alt="monolitico" style="max-height: 360px">
+								<br>
+								Monolítico
+							</div>
+							<div class="fragment">
+								<img src="chaos-traffic.jpg" alt="monolitico" style="max-height: 360px">
+								<br>
+								Microsserviços
+							</div>
+						</div>
+					</section>
+					<section>
+						<h5>Como se parece uma arquitetura de microsserviços?</h5>
+						<img src="ms-connections.png" alt="microservice" class="fragment">
+					</section>
+					<section>
+						<h5>Um pouco de zoom</h5>
+						<img src="simple-architecture.png" alt="simple-architecture">
+					</section>
+					<section>
+						<h5>E em php?</h5>
+						<img src="simple-architecture-php.png" alt="simple-architecture" class="fragment">
+					</section>
+				</section>
+				
+				
+				
+				<section>
+					<section>
+						<h3>Eventos e PHP</h3>
+					</section>
+					<section>
+						<h5>Mas porque falar de eventos?</h5>
+						<img src="ms-rest-simple.jpg" alt="ms-rest-simple"  style="width: 100%;">
+					</section>
+					<section>
+							<h5>Mas porque falar de eventos?</h5>
+							<img src="ms-event-streaming-simple.jpg" alt="ms-event-streaming-simple" style="100%">
+					</section>
+					<section>
+							<img src="event-communication.png" alt="bla">
+					</section>
+					<section>
+						<h5>Tá, e onde estão os eventos no PHP?</h5>
+						<small>Exemplos do que podemos usar para executar eventos assíncronos (similar JS)</small>
+						<div class="flow-row-around">
+							<div>
+								<a href="https://reactphp.org/">
+									<img src="reactphp.svg" alt="ReactPhp" class="no-effect" style="height: 100px;">
+									<br>
+									<small>
+										ReactPhp
+									</small>							
+								</a>
+							</div>
+							<div>
+								<a href="https://amphp.org/">
+									<img src="amphp.png" alt="Amphp" class="no-effect" style="height: 100px;">
+									<br>
+									<small>
+										Amphp
+									</small>
+								</a>
+							</div>
+							<div>
+								<a href="https://github.com/spatie/async">
+									<img src="https://image.shutterstock.com/image-vector/no-image-available-sign-absence-260nw-373243873.jpg" alt="Amphp" class="no-effect" style="height: 100px;">
+									<br>
+									<small>
+										Spatie/Async
+									</small>
+								</a>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h5>Mas, quero rodar eventos no meu Laravel/Symfony. Pode não?</h5>
+						<p class="fragment">Marré-claro</p>						
+					</section>
+				</section>
+
 			</div>
 		</div>
 
@@ -37,6 +174,11 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+				transition: 'slide',
 				dependencies: [
 					{ src: '../base_revealjs/plugin/markdown/marked.js' },
 					{ src: '../base_revealjs/plugin/markdown/markdown.js' },
